@@ -1,7 +1,5 @@
 import bpy
 import bmesh
-import mathutils
-
 
 def get_objs_from_col(col):
     objs = []
