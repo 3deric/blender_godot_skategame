@@ -10,7 +10,11 @@ class OBJECT_OT_prepare_export_collection(bpy.types.Operator):
     
     COL_EXPORT = "export"
     GRP_RAILS = "rails"
-    
+    GRP_FLOOR = "floor"
+    GRP_WALL = "wall"
+    GRP_PIPE = "pipe"
+    GRP_MESH = "mesh"
+
     def execute(self, context):
 
         col = context.collection
@@ -36,5 +40,9 @@ class OBJECT_OT_prepare_export_collection(bpy.types.Operator):
         for obj in objs:
             print(obj.name)
             get_obj_rails(obj, self.GRP_RAILS, col_export)
+            get_obj_colliders(obj, self.GRP_FLOOR, col_export)
+            get_obj_colliders(obj, self.GRP_WALL, col_export)
+            get_obj_colliders(obj, self.GRP_PIPE, col_export)
+            get_obj_mesh(obj, self.GRP_MESH, col_export)
         
         return {'FINISHED'}
